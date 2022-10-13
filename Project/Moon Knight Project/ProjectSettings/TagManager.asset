@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Tilemap
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG_Cave
+    uniqueID: 3707635647
+    locked: 0
+  - name: Tilemap
+    uniqueID: 3499779751
+    locked: 0
+  - name: Foreground
+    uniqueID: 371075655
     locked: 0
