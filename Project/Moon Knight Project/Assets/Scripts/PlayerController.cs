@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,8 @@ public class PlayerController : MonoBehaviour
 
     //Not accessible by Inspector
     private float InputDirection;
-
+    private bool isRunning;
+    private bool isFacingRight = true;
     private Rigidbody2D rb;
 
     private Animator animator;
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckInput();
+        CheckMovementDirection();  
+        UpdateAnimation();
     }
 
     private void FixedUpdate()
@@ -40,5 +44,38 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
         rb.velocity = new Vector2(movementSpeed * InputDirection, rb.velocity.y);
+    }
+
+    private void CheckMovementDirection()
+    {
+        //is Moving to Left
+        if (isFacingRight && InputDirection < 0)
+        {
+            Flip();
+        }
+        else if (!isFacingRight && InputDirection > 0)
+        {
+            Flip();
+        }
+
+        if (rb.velocity.x <= -0.5f || rb.velocity.x >= 0.5f)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+    }
+
+    private void UpdateAnimation()
+    {
+        animator.SetBool("isRunning", isRunning);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 }
