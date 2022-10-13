@@ -699,6 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736425771}
   - component: {fileID: 736425772}
+  - component: {fileID: 736425773}
   m_Layer: 0
   m_Name: FreedomLight 2D
   m_TagString: Untagged
@@ -967,6 +968,26 @@ MonoBehaviour:
   - {x: 0.12398291, y: -0.72316885, z: 0}
   - {x: 1.9456038, y: -0.894711, z: 0}
   - {x: 2.9622617, y: 1.2666593, z: 0}
+--- !u!95 &736425773
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736425770}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d7d8bacb0183c04ea6a668d21ff419d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &774943043
 GameObject:
   m_ObjectHideFlags: 0
@@ -4061,7 +4082,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018152531}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
