@@ -7,9 +7,18 @@ public class PlayerController : MonoBehaviour
 {
     //Accessible by inspector
     public float movementSpeed = 5.0f;
+    //Jumping Float
+    public float jumpForce = 8.0f;
+    public float fallMutiplier;
+    public float lowJumpMultiplier;
 
+    public int availableJump = 1;
+    private int availableJumpLeft;
+    private bool canJump;
     //Not accessible by Inspector
     private float InputDirection;
+    //Related to running and flipping
+
     private bool isRunning;
     private bool isFacingRight = true;
     private bool isGrounded;
@@ -25,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
+        availableJumpLeft = availableJump;
     }
 
     // Update is called once per frame
@@ -34,6 +43,16 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         CheckMovementDirection();
         UpdateAnimation();
+        CheckIfCanJump();
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMutiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
     }
 
     //update every second
@@ -46,6 +65,38 @@ public class PlayerController : MonoBehaviour
     private void CheckInput()
     {
         InputDirection = Input.GetAxisRaw("Horizontal");
+
+        //Check input for jump
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        if (canJump)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            availableJumpLeft--;
+        }
+    }
+
+    private void CheckIfCanJump()
+    {
+        if (isGrounded && rb.velocity.y <= 3)
+        {
+            availableJumpLeft = availableJump;
+        }
+        else if (availableJumpLeft <= 0)
+        {
+            canJump = false;
+        }
+        else
+        {
+            canJump = true;
+        }
     }
 
     private void ApplyMovement()

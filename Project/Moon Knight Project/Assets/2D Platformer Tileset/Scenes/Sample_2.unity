@@ -579,8 +579,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055d6d9dd1cac1041aed67c5a1a0c52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  groundCheckCircle: 0
+  movementSpeed: 6
+  jumpForce: 12
+  fallMutiplier: 2.5
+  lowJumpMultiplier: 3
+  availableJump: 2
+  groundCheckCircle: 0.3
   groundCheck: {fileID: 170283108}
   groundLayerMask:
     serializedVersion: 2
