@@ -12,8 +12,13 @@ public class PlayerController : MonoBehaviour
     private float InputDirection;
     private bool isRunning;
     private bool isFacingRight = true;
-    private Rigidbody2D rb;
+    private bool isGrounded;
+    //Groundcheck / Bool animator
+    public float groundCheckCircle;
+    public Transform groundCheck;
+    public LayerMask groundLayerMask;
 
+    private Rigidbody2D rb;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -27,13 +32,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckInput();
-        CheckMovementDirection();  
+        CheckMovementDirection();
         UpdateAnimation();
     }
 
+    //update every second
     private void FixedUpdate()
     {
         ApplyMovement();
+        CheckEnvironment();
     }
 
     private void CheckInput()
@@ -71,11 +78,22 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimation()
     {
         animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     private void Flip()
     {
         isFacingRight = !isFacingRight;
         transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
+    private void CheckEnvironment()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, groundLayerMask);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckCircle);
     }
 }
