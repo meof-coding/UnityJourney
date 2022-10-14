@@ -85,11 +85,11 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfCanJump()
     {
-        if (isGrounded && rb.velocity.y <= 3)
+            if (isGrounded && rb.velocity.y <= 3)
         {
             availableJumpLeft = availableJump;
         }
-        else if (availableJumpLeft <= 0)
+         if (availableJumpLeft <= 0)
         {
             canJump = false;
         }
