@@ -14,6 +14,6 @@ public class LightFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(gameObject.transform);
+        transform.position = gameObject.transform.position;
     }
 }
