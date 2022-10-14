@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Tilemap
-  - 
+  - Player
   - 
   - 
   - 
@@ -67,4 +67,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 371075655
+    locked: 0
+  - name: Player
+    uniqueID: 1978810565
     locked: 0
