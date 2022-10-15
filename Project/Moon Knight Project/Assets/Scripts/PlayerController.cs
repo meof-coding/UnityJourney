@@ -15,6 +15,19 @@ public class PlayerController : MonoBehaviour
     public int availableJump = 1;
     private int availableJumpLeft;
     private bool canJump;
+
+    //Jump Stuff
+    public bool canWallJump = true;
+    public float wallSlidingSpeed = -0.45f;
+    public float verticalWallForce;
+    public float wallJumpTime;
+
+    public bool isTouchingWalls;
+    public bool wallHold;
+    public bool wallJumping;
+
+    public Transform wallCheck;
+    public ParticleSystem dust;
     //Not accessible by Inspector
     private float InputDirection;
     //Related to running and flipping
@@ -29,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +51,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         availableJumpLeft = availableJump;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -45,6 +59,43 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         CheckIfCanJump();
 
+        //Wall Jump
+        if (canWallJump)
+        {
+            isTouchingWalls = Physics2D.OverlapCircle(wallCheck.position, groundCheckCircle, groundLayerMask);
+            if (isTouchingWalls && !isGrounded && InputDirection != 0)
+            {
+                wallHold = true;
+            }
+            else
+            {
+                wallHold = false;
+            }
+            if (wallHold)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && wallHold)
+            {
+                wallJumping = true;
+                Invoke("setWallJumpToFalse", wallJumpTime);
+            }
+            if (wallJumping)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, verticalWallForce);
+            }
+            if (Input.GetKey(KeyCode.DownArrow) && wallHold)
+            {
+                wallSlidingSpeed = 3f;
+            }
+            else
+            {
+                wallSlidingSpeed = -0.45f;
+            }
+        }
+
+        //Variable Jump Height
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMutiplier - 1) * Time.deltaTime;
@@ -130,6 +181,9 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isClimb", wallHold);
+        animator.SetFloat("yVelocity", rb.velocity.y);
+
     }
 
     private void Flip()
@@ -143,8 +197,16 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, groundLayerMask);
     }
 
+    //wallJumpStuff
+    private void setWallJumpToFalse()
+    {
+        wallJumping = false;
+        availableJumpLeft++;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckCircle);
+        Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
     }
 }
