@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float groundCheckCircle;
     public Transform groundCheck;
     public LayerMask groundLayerMask;
+    public LayerMask platformLayerMask;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -140,7 +141,10 @@ public class PlayerController : MonoBehaviour
 
     private void CheckEnvironment()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, groundLayerMask);
+        //isGrounded;
+        bool isGroundTileMap= Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, groundLayerMask);
+        bool isGroundPlatform= Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, platformLayerMask);
+        isGrounded = (isGroundTileMap || isGroundPlatform);
     }
 
     private void OnDrawGizmos()
