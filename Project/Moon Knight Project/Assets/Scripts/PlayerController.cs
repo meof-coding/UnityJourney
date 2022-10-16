@@ -17,17 +17,22 @@ public class PlayerController : MonoBehaviour
     private bool canJump;
 
     //Jump Stuff
-    public bool canWallJump = true;
-    public float wallSlidingSpeed = -0.45f;
-    public float verticalWallForce;
-    public float wallJumpTime;
+    private float moveSpeed;
+    private float dirX;
+    private float dirY;
+    public bool ClimbingAllowed { get; set; }
+    //public bool canWallJump = true;
+    //public float wallSlidingSpeed = -0.45f;
+    //public float verticalWallForce;
+    //public float wallJumpTime;
 
     public bool isTouchingWalls;
-    public bool wallHold;
-    public bool wallJumping;
+    public bool climb;
+    public bool ladleHold;
+    //public bool wallJumping;
 
     public Transform wallCheck;
-    public ParticleSystem dust;
+    //public ParticleSystem dust;
     //Not accessible by Inspector
     private float InputDirection;
     //Related to running and flipping
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public float groundCheckCircle;
     public Transform groundCheck;
     public LayerMask groundLayerMask;
+    public LayerMask laddleLayerMask;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -50,7 +56,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         availableJumpLeft = availableJump;
+        //Climb Stuff
+        moveSpeed = 5f;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -59,40 +68,26 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         CheckIfCanJump();
 
-        //Wall Jump
-        if (canWallJump)
+        if (ClimbingAllowed)
         {
-            isTouchingWalls = Physics2D.OverlapCircle(wallCheck.position, groundCheckCircle, groundLayerMask);
-            if (isTouchingWalls && !isGrounded && InputDirection != 0)
+            if (isTouchingWalls && !isGrounded && Input.anyKey)
             {
-                wallHold = true;
+                climb = true;
+                dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
             }
-            else
+            if (isTouchingWalls && !isGrounded && !Input.anyKey)
             {
-                wallHold = false;
+                ladleHold = true;
+                climb = false;
             }
-            if (wallHold)
+            if (!isTouchingWalls && isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+                climb = false;
             }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow) && wallHold)
-            {
-                wallJumping = true;
-                Invoke("setWallJumpToFalse", wallJumpTime);
-            }
-            if (wallJumping)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, verticalWallForce);
-            }
-            if (Input.GetKey(KeyCode.DownArrow) && wallHold)
-            {
-                wallSlidingSpeed = 3f;
-            }
-            else
-            {
-                wallSlidingSpeed = -0.45f;
-            }
+        }
+        if (isGrounded)
+        {
+            ladleHold = false;
         }
 
         //Variable Jump Height
@@ -111,6 +106,16 @@ public class PlayerController : MonoBehaviour
     {
         ApplyMovement();
         CheckEnvironment();
+        //Climb Stuff
+        if (ClimbingAllowed)
+        {
+            rb.isKinematic = true;
+            rb.velocity = new Vector2(dirX, dirY);
+        }
+        else
+        {
+            rb.isKinematic = false;
+        }
     }
 
     private void CheckInput()
@@ -181,8 +186,8 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isGrounded", isGrounded);
-        animator.SetBool("isClimb", wallHold);
-        animator.SetFloat("yVelocity", rb.velocity.y);
+        animator.SetBool("isClimb", climb);
+        animator.SetBool("isnotClimb", ladleHold);
 
     }
 
@@ -195,18 +200,19 @@ public class PlayerController : MonoBehaviour
     private void CheckEnvironment()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, groundLayerMask);
+        isTouchingWalls = Physics2D.OverlapCircle(wallCheck.position, groundCheckCircle, laddleLayerMask);
     }
 
-    //wallJumpStuff
-    private void setWallJumpToFalse()
-    {
-        wallJumping = false;
-        availableJumpLeft++;
-    }
+    ////wallJumpStuff
+    //private void setWallJumpToFalse()
+    //{
+    //    wallJumping = false;
+    //    availableJumpLeft++;
+    //}
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckCircle);
-        Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
+        //Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
     }
 }
