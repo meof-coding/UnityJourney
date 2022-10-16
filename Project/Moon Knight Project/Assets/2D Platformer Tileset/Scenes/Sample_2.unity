@@ -668,11 +668,18 @@ MonoBehaviour:
   fallMutiplier: 2.5
   lowJumpMultiplier: 3
   availableJump: 2
+  isTouchingWalls: 0
+  climb: 0
+  ladleHold: 0
+  wallCheck: {fileID: 0}
   groundCheckCircle: 0.3
   groundCheck: {fileID: 170283108}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  laddleLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &316493258
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,9 +740,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795187545
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 1978810565
+  m_SortingLayer: 4
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 7f33db6eaed72754bafb5031cb62e90c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
