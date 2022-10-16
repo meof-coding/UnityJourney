@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         //Climb Stuff
         moveSpeed = 5f;
     }
+
     // Update is called once per frame
     void Update()
     {
