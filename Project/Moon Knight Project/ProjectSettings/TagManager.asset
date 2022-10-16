@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG5
+    uniqueID: 4293254115
+    locked: 0
+  - name: BG4
+    uniqueID: 1654167319
+    locked: 0
+  - name: BG3
+    uniqueID: 2170253217
+    locked: 0
+  - name: BG2
+    uniqueID: 3700182121
+    locked: 0
+  - name: BG1
+    uniqueID: 2855218471
+    locked: 0
+  - name: Object
+    uniqueID: 4234762247
+    locked: 0
+  - name: Player
+    uniqueID: 3353556621
+    locked: 0
+  - name: TileSet
+    uniqueID: 2353473779
+    locked: 0
