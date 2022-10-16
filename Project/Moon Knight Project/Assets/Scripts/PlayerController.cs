@@ -69,24 +69,19 @@ public class PlayerController : MonoBehaviour
 
         if (ClimbingAllowed)
         {
-            isTouchingWalls = Physics2D.OverlapCircle(wallCheck.position, groundCheckCircle, laddleLayerMask);
             if (isTouchingWalls && !isGrounded && Input.anyKey)
             {
                 climb = true;
+                dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
             }
-            else if (isTouchingWalls && !isGrounded && !Input.anyKey)
+            if (isTouchingWalls && !isGrounded && !Input.anyKey)
             {
                 ladleHold = true;
                 climb = false;
             }
-            else
+            if (!isTouchingWalls && isGrounded)
             {
                 climb = false;
-            }
-            //ladleHold = false;
-            if (climb)
-            {
-                dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
             }
         }
         if (isGrounded)
@@ -204,6 +199,7 @@ public class PlayerController : MonoBehaviour
     private void CheckEnvironment()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckCircle, groundLayerMask);
+        isTouchingWalls = Physics2D.OverlapCircle(wallCheck.position, groundCheckCircle, laddleLayerMask);
     }
 
     ////wallJumpStuff
@@ -216,6 +212,6 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckCircle);
-        Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
+        //Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
     }
 }
