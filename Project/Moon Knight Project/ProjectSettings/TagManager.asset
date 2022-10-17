@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Tilemap
-  - Player
+  - 
+  - 
   - 
   - 
   - 
@@ -42,32 +42,26 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: BG5
-    uniqueID: 3874667521
+    uniqueID: 4293254115
     locked: 0
   - name: BG4
-    uniqueID: 2202408929
+    uniqueID: 1654167319
     locked: 0
   - name: BG3
-    uniqueID: 2999488361
+    uniqueID: 2170253217
     locked: 0
   - name: BG2
-    uniqueID: 301840337
+    uniqueID: 3700182121
     locked: 0
   - name: BG1
-    uniqueID: 789407333
-    locked: 0
-  - name: BG_Cave
-    uniqueID: 3707635647
+    uniqueID: 2855218471
     locked: 0
   - name: Object
-    uniqueID: 597363919
-    locked: 0
-  - name: Tilemap
-    uniqueID: 3499779751
-    locked: 0
-  - name: Foreground
-    uniqueID: 371075655
+    uniqueID: 4234762247
     locked: 0
   - name: Player
-    uniqueID: 1978810565
+    uniqueID: 3353556621
+    locked: 0
+  - name: TileSet
+    uniqueID: 2353473779
     locked: 0
