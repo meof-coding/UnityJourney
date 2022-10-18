@@ -41,14 +41,35 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG5
+    uniqueID: 1118297265
+    locked: 0
+  - name: BG4
+    uniqueID: 1380416227
+    locked: 0
+  - name: BG3
+    uniqueID: 2542657517
+    locked: 0
+  - name: BG2
+    uniqueID: 873644901
+    locked: 0
+  - name: BG1
+    uniqueID: 2990643879
+    locked: 0
   - name: BG_Cave
     uniqueID: 3707635647
+    locked: 0
+  - name: Object
+    uniqueID: 2858455423
     locked: 0
   - name: Tilemap
     uniqueID: 3499779751
     locked: 0
   - name: Foreground
     uniqueID: 371075655
+    locked: 0
+  - name: Gift
+    uniqueID: 3414916289
     locked: 0
   - name: Player
     uniqueID: 1978810565
