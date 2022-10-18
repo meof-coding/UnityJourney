@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 174027584}
   m_Layer: 0
   m_Name: health_potion
-  m_TagString: Player
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -941,6 +941,7 @@ MonoBehaviour:
   laddleLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  objToDestroy: {fileID: 0}
 --- !u!1 &316493258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,7 +3228,7 @@ GameObject:
   - component: {fileID: 1251411688}
   m_Layer: 0
   m_Name: weapon_bow
-  m_TagString: Player
+  m_TagString: Bow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4968,7 +4969,7 @@ GameObject:
   - component: {fileID: 1816984550}
   m_Layer: 0
   m_Name: weapon_sword
-  m_TagString: Player
+  m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

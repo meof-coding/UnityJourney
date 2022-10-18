@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    GameObject objToDestroy;
     public bool canDestroy = false;
     //Audio Controller
     public AudioSource audioPlayer;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        objToDestroy = gameObject;
         canDestroy = true;
     }
 
@@ -19,7 +17,7 @@ public class WeaponController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.G) && canDestroy)
         {
-            Destroy(objToDestroy);
+            //Destroy(objToDestroy);
             audioPlayer.Play();
             canDestroy = false;
         }

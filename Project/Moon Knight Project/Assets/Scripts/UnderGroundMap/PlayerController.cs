@@ -46,6 +46,14 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayerMask;
     public LayerMask laddleLayerMask;
 
+    //Pick up item Stuff
+    public GameObject objToDestroy;
+    public bool canDestroy = false;
+    public bool isSword = false;
+    public bool isHealth = false;
+    public bool isBow = false;
+
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -66,7 +74,6 @@ public class PlayerController : MonoBehaviour
         CheckMovementDirection();
         UpdateAnimation();
         CheckIfCanJump();
-
         if (ClimbingAllowed)
         {
             if (isTouchingWalls && !isGrounded && Input.anyKey)
@@ -107,6 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         ApplyMovement();
         CheckEnvironment();
+        onPickUpItem();
         //Climb Stuff
         if (ClimbingAllowed)
         {
@@ -204,12 +212,48 @@ public class PlayerController : MonoBehaviour
         isTouchingWalls = Physics2D.OverlapCircle(wallCheck.position, groundCheckCircle, laddleLayerMask);
     }
 
-    ////wallJumpStuff
-    //private void setWallJumpToFalse()
-    //{
-    //    wallJumping = false;
-    //    availableJumpLeft++;
-    //}
+    // Pickup item
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Sword")
+        {
+            isSword = true;
+            isHealth = !isSword;
+            isBow = !isSword;
+        }
+        if (collision.tag == "Health")
+        {
+            isHealth = true;
+            isSword = !isHealth;
+            isBow = !isHealth;
+        }
+        if (collision.tag == "Bow")
+        {
+            isBow = true;
+            isSword = !isBow;
+            isHealth = !isBow;
+        }
+
+    }
+
+    public void onPickUpItem()
+    {
+        if (isSword && Input.GetKey(KeyCode.G))
+        {
+            Destroy(GameObject.FindWithTag("Sword"));
+            isSword = false;
+        }
+        if (isHealth && Input.GetKey(KeyCode.G))
+        {
+            Destroy(GameObject.FindWithTag("Health"));
+            isHealth = false;
+        }
+        if (isBow && Input.GetKey(KeyCode.G))
+        {
+            Destroy(GameObject.FindWithTag("Bow"));
+            isBow = false;
+        }
+    }
 
     private void OnDrawGizmos()
     {
