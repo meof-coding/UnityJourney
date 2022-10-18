@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 293253260}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 6.6732244
@@ -205,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 112107705}
   - component: {fileID: 112107704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795187545
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 32b58f334b01f1f4cb12489fb73674cb, type: 3}
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000bf07fedca7669ad0472a1e16
+  m_ApplyToSortingLayers: 00000000e3dbe5ff17979862a16f5b81694c8cdc272d2faa075869fc8d36e3c7f328478c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -431,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 249053940}
   - component: {fileID: 249053939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rocks_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,9 +476,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7398dcdc91671e2418ed7c8d586bede9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -621,9 +621,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1978810565
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -941410675
+  m_SortingLayer: 7
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 217a34da322f09a4f915f2ca6befab73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -762,14 +762,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316493258}
-  m_LocalRotation: {x: -0.008726336, y: -0.018157782, z: 0.000158483, w: 0.9997971}
+  m_LocalRotation: {x: -0.008693891, y: 0.08802808, z: -0.0007683189, w: 0.9960798}
   m_LocalPosition: {x: 21.35735, y: -3.8230324, z: 22.222633}
   m_LocalScale: {x: 1, y: 2.1875, z: 0.93201005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 851911134}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.999, y: -2.081, z: 0.036}
+  m_LocalEulerAnglesHint: {x: -0.985, y: 10.102, z: -0.175}
 --- !u!50 &316493263
 Rigidbody2D:
   serializedVersion: 4
@@ -877,7 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351317523}
   - component: {fileID: 351317522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rocks_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,9 +922,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97f1d22f28205c7428795436372f36ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Intensity: 1.06
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000bf07fedca7669ad0472a1e16c540f275
+  m_ApplyToSortingLayers: 00000000e3dbe5ff17979862a16f5b81694c8cdc272d2faa075869fc8d36e3c7f328478c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1538,7 +1538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534758216}
   - component: {fileID: 534758215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: timber_brace_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1583,9 +1583,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cf6ed0406441c4d418bff0249f43ba57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_Intensity: 0.99
   m_LightVolumeIntensity: 0.37
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 00000000bf07fedca7669ad0472a1e16
+  m_ApplyToSortingLayers: 00000000e3dbe5ff17979862a16f5b81694c8cdc272d2faa075869fc8d36e3c7f328478c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 0.37
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 00000000bf07fedca7669ad0472a1e16c540f275
+  m_ApplyToSortingLayers: 00000000e3dbe5ff17979862a16f5b81694c8cdc272d2faa075869fc8d36e3c7f328478c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2271,7 +2271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774943044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2315,7 +2315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844931848}
   - component: {fileID: 844931847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rocks_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2360,9 +2360,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7398dcdc91671e2418ed7c8d586bede9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2655,9 +2655,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795187545
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cad867ad9dd8c0649ae542c74e108127, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2677,8 +2677,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981504137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.11, y: -11.74, z: 0}
-  m_LocalScale: {x: 1.9875, y: 2.11375, z: 1}
+  m_LocalPosition: {x: 18.11, y: -12.19, z: 0}
+  m_LocalScale: {x: 1.3167188, y: 1.3567632, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2896,7 +2896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1264487561}
   - component: {fileID: 1264487562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2956,9 +2956,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: eb38ba3867a833a4d9c925c2abf90eea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -3106,7 +3106,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000bf07fedca7669ad0472a1e16
+  m_ApplyToSortingLayers: 00000000e3dbe5ff17979862a16f5b81694c8cdc272d2faa075869fc8d36e3c7f328478c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3261,7 +3261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397954753}
   - component: {fileID: 1397954754}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3321,9 +3321,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a32f108e697e91d41be2aa53ef2bd99d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3431,7 +3431,7 @@ GameObject:
   - component: {fileID: 1473968410}
   - component: {fileID: 1473968412}
   - component: {fileID: 1473968411}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: candle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3511,9 +3511,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795187545
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f63953d0708b5a4b858b5d54de43b3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3704,7 +3704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1630213105}
   - component: {fileID: 1630213106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lantern_on
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3764,7 +3764,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -795187545
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: de95a4f4a3e9baa499d384c6e69dbbf9, type: 3}
@@ -4243,7 +4243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1869816104}
   - component: {fileID: 1869816103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: timber_brace_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4288,9 +4288,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cf6ed0406441c4d418bff0249f43ba57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4376,7 +4376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2013935781}
   - component: {fileID: 2013935780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: timber_brace_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4421,9 +4421,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 38bebaf51ab3649408917dfd0dc12a4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10136,7 +10136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043222386}
   - component: {fileID: 2043222385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10181,9 +10181,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -587331649
+  m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b98d10635d8080741a9f8cb3e42b0361, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
