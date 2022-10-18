@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    GameObject objToDestroy;
+    bool canDestroy = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        objToDestroy = gameObject;
+        canDestroy = true;
+    }
 
-        if (Input.GetKeyDown(KeyCode.G))
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.G) && canDestroy)
         {
-            if (collision.tag == "Player")
-            {
-                Destroy(gameObject);
-            }
+            Destroy(objToDestroy);
+            canDestroy = false;
         }
-
     }
 }
