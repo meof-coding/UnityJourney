@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
             {
                 ladleHold = true;
                 climb = false;
-                dirY = 0;
             }
             if (!isTouchingWalls && isGrounded)
             {
@@ -89,7 +88,6 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             ladleHold = false;
-            climb = false;
         }
 
         //Variable Jump Height
