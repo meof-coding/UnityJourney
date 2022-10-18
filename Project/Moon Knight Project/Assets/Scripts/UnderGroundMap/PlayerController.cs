@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-
     // Start is called before the first frame update
     void Start()
     {
