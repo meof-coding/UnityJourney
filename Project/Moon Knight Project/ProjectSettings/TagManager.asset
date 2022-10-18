@@ -11,10 +11,17 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< HEAD
   - Tilemap
   - Player
   - Platform
   - Laddle
+=======
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Phase2
   - 
   - 
   - 
@@ -41,6 +48,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: BG_Cave
     uniqueID: 3707635647
     locked: 0
@@ -49,7 +57,29 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 371075655
+=======
+  - name: BG5
+    uniqueID: 4293254115
+    locked: 0
+  - name: BG4
+    uniqueID: 1654167319
+    locked: 0
+  - name: BG3
+    uniqueID: 2170253217
+    locked: 0
+  - name: BG2
+    uniqueID: 3700182121
+    locked: 0
+  - name: BG1
+    uniqueID: 2855218471
+    locked: 0
+  - name: Object
+    uniqueID: 4234762247
+>>>>>>> Phase2
     locked: 0
   - name: Player
-    uniqueID: 1978810565
+    uniqueID: 3353556621
+    locked: 0
+  - name: TileSet
+    uniqueID: 2353473779
     locked: 0
