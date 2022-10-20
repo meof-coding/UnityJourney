@@ -60,8 +60,17 @@ TagManager:
   - name: BG1
     uniqueID: 2855218471
     locked: 0
+  - name: Cave_bg
+    uniqueID: 1188563163
+    locked: 0
   - name: Object
     uniqueID: 4234762247
+    locked: 0
+  - name: Gift
+    uniqueID: 792056975
+    locked: 0
+  - name: Enemy
+    uniqueID: 2381716875
     locked: 0
   - name: Player
     uniqueID: 3353556621

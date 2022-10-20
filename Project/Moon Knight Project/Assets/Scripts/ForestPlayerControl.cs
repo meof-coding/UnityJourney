@@ -7,14 +7,17 @@ public class ForestPlayerControl : MonoBehaviour
 
     Rigidbody2D rigid;
     Vector2 localScale;
-
+    Animator animator;
     void Start()
     {
         rigid = this.gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     void GoLeft(float force)
     {
+        animator.SetBool("IsRun", true);
+        animator.SetBool("IsStay", false);
         Vector2 localScale = transform.localScale;
         if (localScale.x > 0)
             localScale.x *= -1.0f;
@@ -25,6 +28,8 @@ public class ForestPlayerControl : MonoBehaviour
 
     void GoRight(float force)
     {
+        animator.SetBool("IsRun", true);
+        animator.SetBool("IsStay", false);
         Vector2 localScale = transform.localScale;
         if (localScale.x < 0)
             localScale.x *= -1.0f;
@@ -57,6 +62,7 @@ public class ForestPlayerControl : MonoBehaviour
         {
             GoLeft(2);
         }
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
