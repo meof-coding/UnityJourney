@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     //Pick up item Stuff
     public GameObject[] objToDestroy;
     public List<GameObject> PlayersInTrigger;
-    //public AudioSource audioPlayer;
+    public bool isCollectSword = false;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isClimb", climb);
         animator.SetBool("isnotClimb", ladleHold);
+        animator.SetBool("isCollectSword", isCollectSword);
 
     }
 
@@ -225,6 +226,10 @@ public class PlayerController : MonoBehaviour
             var audio = PlayersInTrigger[0].GetComponent<AudioSource>();
             audio.transform.parent = null;
             audio.Play();
+            if (PlayersInTrigger[0].tag == "Sword")
+            {
+                isCollectSword = true;
+            }
             Destroy(PlayersInTrigger[0], audio.clip.length);
         }
     }
