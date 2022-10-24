@@ -46,6 +46,16 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> PlayersInTrigger;
     public bool isCollectSword = false;
 
+    //Attack Animation
+    public Animator attack;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 40;
+
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -59,6 +69,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 5f;
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -68,14 +79,32 @@ public class PlayerController : MonoBehaviour
         CheckIfCanJump();
         onPickUpItem();
 
-        if (Input.GetMouseButtonDown(0))
-            Debug.Log("Pressed primary button.");
+        if (Time.time >= nextAttackTime)
+        {
+            //Test mouse click
+            if (Input.GetMouseButtonDown(0))
+            {
+                attack.SetTrigger("SwordAttack1");
+                nextAttackTime = Time.time + 1f / attackRate;
+                Attack();
+            }
 
-        if (Input.GetMouseButtonDown(1))
-            Debug.Log("Pressed secondary button.");
+            if (Input.GetMouseButtonDown(1))
+            {
+                attack.SetTrigger("SwordAttack2");
+                nextAttackTime = Time.time + 1f / attackRate;
+                Attack();
+            }
 
-        if (Input.GetMouseButtonDown(2))
-            Debug.Log("Pressed middle click.");
+
+            if (Input.GetMouseButtonDown(2))
+            {
+                attack.SetTrigger("SwordAttack3");
+                nextAttackTime = Time.time + 1f / attackRate;
+                Attack();
+            }
+        }
+
 
         if (ClimbingAllowed)
         {
@@ -109,6 +138,16 @@ public class PlayerController : MonoBehaviour
         else if (rb.velocity.y > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
+
+    private void Attack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //Damage them
+        foreach (var enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyController>().TakeDamage(20);
         }
     }
 
@@ -248,5 +287,14 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckCircle);
         //Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
