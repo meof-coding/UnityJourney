@@ -84,24 +84,35 @@ public class PlayerController : MonoBehaviour
             //Test mouse click
             if (Input.GetMouseButtonDown(0))
             {
-                attack.SetTrigger("SwordAttack1");
-                nextAttackTime = Time.time + 1f / attackRate;
-                Attack();
+                if (isCollectSword)
+                {
+
+                    attack.SetTrigger("SwordAttack1");
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+
+                }
             }
 
             if (Input.GetMouseButtonDown(1))
             {
-                attack.SetTrigger("SwordAttack2");
-                nextAttackTime = Time.time + 1f / attackRate;
-                Attack();
+                if (isCollectSword)
+                {
+                    attack.SetTrigger("SwordAttack2");
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
             }
 
 
             if (Input.GetMouseButtonDown(2))
             {
-                attack.SetTrigger("SwordAttack3");
-                nextAttackTime = Time.time + 1f / attackRate;
-                Attack();
+                if (isCollectSword)
+                {
+                    attack.SetTrigger("SwordAttack3");
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
             }
         }
 
