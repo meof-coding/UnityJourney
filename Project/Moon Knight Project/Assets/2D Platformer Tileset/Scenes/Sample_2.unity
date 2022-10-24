@@ -1223,7 +1223,7 @@ MonoBehaviour:
   objToDestroy: []
   PlayersInTrigger: []
   isCollectSword: 0
-  attack: {fileID: 0}
+  attack: {fileID: 293253258}
   attackPoint: {fileID: 1058062334}
   attackRange: 0.52
   enemyLayers:
