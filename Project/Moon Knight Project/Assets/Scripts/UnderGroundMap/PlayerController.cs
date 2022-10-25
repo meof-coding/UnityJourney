@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     public float attackRate = 2f;
     float nextAttackTime = 0f;
 
+    //Slash effect
+    [SerializeField]
+    private GameObject Slash;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -88,9 +92,10 @@ public class PlayerController : MonoBehaviour
                 {
 
                     attack.SetTrigger("SwordAttack1");
+                    Invoke("SlashImpact", 0.2f);
+                    Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
-
                 }
             }
 
@@ -99,6 +104,8 @@ public class PlayerController : MonoBehaviour
                 if (isCollectSword)
                 {
                     attack.SetTrigger("SwordAttack2");
+                    Invoke("SlashImpact", 0.2f);
+                    Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
                 }
@@ -110,6 +117,8 @@ public class PlayerController : MonoBehaviour
                 if (isCollectSword)
                 {
                     attack.SetTrigger("SwordAttack3");
+                    Invoke("SlashImpact", 0.2f);
+                    Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
                 }
@@ -150,6 +159,16 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    private void SlashImpact()
+    {
+        Slash.SetActive(true);
+    }
+
+    private void NoSlash()
+    {
+        Slash.SetActive(false);
     }
 
     private void Attack()
