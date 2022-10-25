@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject Slash;
 
+    //Level Trigger
+    public LayerMask levelLayers;
+
     //SlashSound
     public AudioSource slashSound;
 
@@ -180,11 +183,18 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitLevel = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, levelLayers);
         //Damage them
         foreach (var enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyController>().TakeDamage(20);
         }
+
+        foreach (var level in hitLevel)
+        {
+            level.GetComponent<LevelController>().SwitchOn();
+        }
+
     }
 
     //update every second
