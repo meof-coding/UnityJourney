@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject Slash;
 
+    //SlashSound
+    public AudioSource slashSound;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -93,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
                     attack.SetTrigger("SwordAttack1");
                     Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
                     Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
@@ -105,6 +109,7 @@ public class PlayerController : MonoBehaviour
                 {
                     attack.SetTrigger("SwordAttack2");
                     Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
                     Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
@@ -118,6 +123,7 @@ public class PlayerController : MonoBehaviour
                 {
                     attack.SetTrigger("SwordAttack3");
                     Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
                     Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
