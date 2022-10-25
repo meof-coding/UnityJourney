@@ -66,6 +66,9 @@ public class PlayerController : MonoBehaviour
     //SlashSound
     public AudioSource slashSound;
 
+    //WalkSound
+    public AudioSource walkSound;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -88,6 +91,18 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         CheckIfCanJump();
         onPickUpItem();
+
+        if (isRunning && isGrounded)
+        {
+            if (!walkSound.isPlaying)
+            {
+                walkSound.GetComponent<AudioSource>().Play();
+            }
+        }
+        else
+        {
+            walkSound.GetComponent<AudioSource>().Stop();
+        }
 
         if (Time.time >= nextAttackTime)
         {

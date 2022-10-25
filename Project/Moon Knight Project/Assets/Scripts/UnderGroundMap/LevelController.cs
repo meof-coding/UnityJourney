@@ -6,11 +6,14 @@ public class LevelController : MonoBehaviour
 {
     public Animator animator;
     public GameObject elevator;
+    //Level Sound
+    public AudioSource levelSound;
 
     public void SwitchOn()
     {
         animator.SetTrigger("SwitchOn");
         elevator.GetComponent<ElevatorController>().Active();
+        levelSound.GetComponent<AudioSource>().Play();
     }
 
     public void SwitchOff()
