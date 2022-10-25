@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
     public void SwitchOn()
     {
         animator.SetTrigger("SwitchOn");
-        elevator.GetComponent<ElevatorController>().Active();
+        elevator.GetComponent<ElevatorController>().isTrigger = true;
         levelSound.GetComponent<AudioSource>().Play();
     }
 
