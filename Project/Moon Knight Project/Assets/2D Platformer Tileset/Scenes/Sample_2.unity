@@ -370,12 +370,12 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 7eef3c19548ace64ab38167d3f075fed, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.48
+  m_Pitch: 0.9
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1385,6 +1385,7 @@ MonoBehaviour:
   objToDestroy: []
   PlayersInTrigger: []
   isCollectSword: 0
+  isCollectBow: 0
   attack: {fileID: 293253258}
   attackPoint: {fileID: 1058062334}
   attackRange: 0.52
@@ -2804,6 +2805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 590954809}
   - component: {fileID: 590954808}
+  - component: {fileID: 590954810}
   m_Layer: 0
   m_Name: bg_cave_4
   m_TagString: Untagged
@@ -2879,6 +2881,26 @@ Transform:
   m_Father: {fileID: 1317444516}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &590954810
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590954807}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94860ae5a660e40a7aa593dfe6b684e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &634803437
 GameObject:
   m_ObjectHideFlags: 0

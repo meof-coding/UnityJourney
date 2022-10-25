@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] objToDestroy;
     public List<GameObject> PlayersInTrigger;
     public bool isCollectSword = false;
+    public bool isCollectBow = false;
 
     //Attack Animation
     public Animator attack;
@@ -300,6 +301,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isClimb", climb);
         animator.SetBool("isnotClimb", ladleHold);
         animator.SetBool("isCollectSword", isCollectSword);
+        animator.SetBool("isCollectBow", isCollectBow);
 
     }
 
@@ -339,6 +341,10 @@ public class PlayerController : MonoBehaviour
             if (PlayersInTrigger[0].tag == "Sword")
             {
                 isCollectSword = true;
+            }
+            if (PlayersInTrigger[0].tag == "Bow")
+            {
+                isCollectBow = true;
             }
             Destroy(PlayersInTrigger[0], audio.clip.length);
         }
