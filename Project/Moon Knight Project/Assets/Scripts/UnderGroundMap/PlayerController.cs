@@ -21,22 +21,17 @@ public class PlayerController : MonoBehaviour
     private float dirX;
     private float dirY;
     public bool ClimbingAllowed { get; set; }
-    //public bool canWallJump = true;
-    //public float wallSlidingSpeed = -0.45f;
-    //public float verticalWallForce;
-    //public float wallJumpTime;
 
     public bool isTouchingWalls;
     public bool climb;
     public bool ladleHold;
-    //public bool wallJumping;
 
     public Transform wallCheck;
-    //public ParticleSystem dust;
+
     //Not accessible by Inspector
     private float InputDirection;
-    //Related to running and flipping
 
+    //Related to running and flipping
     private bool isRunning;
     private bool isFacingRight = true;
     private bool isGrounded;
@@ -47,12 +42,19 @@ public class PlayerController : MonoBehaviour
     public LayerMask laddleLayerMask;
 
     //Pick up item Stuff
-    public GameObject objToDestroy;
-    public bool canDestroy = false;
-    public bool isSword = false;
-    public bool isHealth = false;
-    public bool isBow = false;
+    public GameObject[] objToDestroy;
+    public List<GameObject> PlayersInTrigger;
+    public bool isCollectSword = false;
 
+    //Attack Animation
+    public Animator attack;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 40;
+
+    public float attackRate = 2f;
+    float nextAttackTime = 0f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 5f;
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -74,6 +77,46 @@ public class PlayerController : MonoBehaviour
         CheckMovementDirection();
         UpdateAnimation();
         CheckIfCanJump();
+        onPickUpItem();
+
+        if (Time.time >= nextAttackTime)
+        {
+            //Test mouse click
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (isCollectSword)
+                {
+
+                    attack.SetTrigger("SwordAttack1");
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+
+                }
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (isCollectSword)
+                {
+                    attack.SetTrigger("SwordAttack2");
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
+            }
+
+
+            if (Input.GetMouseButtonDown(2))
+            {
+                if (isCollectSword)
+                {
+                    attack.SetTrigger("SwordAttack3");
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
+            }
+        }
+
+
         if (ClimbingAllowed)
         {
             if (isTouchingWalls && !isGrounded && Input.anyKey)
@@ -109,12 +152,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Attack()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        //Damage them
+        foreach (var enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyController>().TakeDamage(20);
+        }
+    }
+
     //update every second
     private void FixedUpdate()
     {
         ApplyMovement();
         CheckEnvironment();
-        onPickUpItem();
         //Climb Stuff
         if (ClimbingAllowed)
         {
@@ -197,6 +249,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isClimb", climb);
         animator.SetBool("isnotClimb", ladleHold);
+        animator.SetBool("isCollectSword", isCollectSword);
 
     }
 
@@ -215,43 +268,29 @@ public class PlayerController : MonoBehaviour
     // Pickup item
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Sword")
+        if (collision.tag == "Sword" || collision.tag == "Health" || collision.tag == "Bow")
         {
-            isSword = true;
-            isHealth = !isSword;
-            isBow = !isSword;
+            PlayersInTrigger.Add(collision.gameObject);
         }
-        if (collision.tag == "Health")
-        {
-            isHealth = true;
-            isSword = !isHealth;
-            isBow = !isHealth;
-        }
-        if (collision.tag == "Bow")
-        {
-            isBow = true;
-            isSword = !isBow;
-            isHealth = !isBow;
-        }
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        PlayersInTrigger.Remove(collision.gameObject);
     }
 
     public void onPickUpItem()
     {
-        if (isSword && Input.GetKey(KeyCode.G))
+        if (Input.GetKey(KeyCode.G) && PlayersInTrigger.Count != 0)
         {
-            Destroy(GameObject.FindWithTag("Sword"));
-            isSword = false;
-        }
-        if (isHealth && Input.GetKey(KeyCode.G))
-        {
-            Destroy(GameObject.FindWithTag("Health"));
-            isHealth = false;
-        }
-        if (isBow && Input.GetKey(KeyCode.G))
-        {
-            Destroy(GameObject.FindWithTag("Bow"));
-            isBow = false;
+            var audio = PlayersInTrigger[0].GetComponent<AudioSource>();
+            audio.transform.parent = null;
+            audio.Play();
+            if (PlayersInTrigger[0].tag == "Sword")
+            {
+                isCollectSword = true;
+            }
+            Destroy(PlayersInTrigger[0], audio.clip.length);
         }
     }
 
@@ -259,5 +298,14 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckCircle);
         //Gizmos.DrawWireSphere(wallCheck.position, groundCheckCircle);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
