@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour
@@ -10,6 +11,16 @@ public class EnemyBehaviourScript : MonoBehaviour
     Vector2 vec;
     public GameObject player;
     Animator animator;
+    //thanh mau
+    [SerializeField]
+    public HealthBar healthBar;
+    int health = 10000;
+    int damage = 50;
+
+    public HealthBar healthBarPlayer;
+    public float spawnDelay = 10;
+    int healthPlayer = 10000;
+    int damagePlayer = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +34,24 @@ public class EnemyBehaviourScript : MonoBehaviour
     {
         if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
         {
+            if(transform.position.x - player.transform.position.x > 0)
+            {
+                Vector2 localScale = transform.localScale;
+                if (localScale.x > 0)
+                    localScale.x *= -1.0f;
+                gameObject.transform.localScale = localScale;
+            }
+            else
+            {
+                Vector2 localScale = transform.localScale;
+                if (localScale.x < 0)
+                    localScale.x *= -1.0f;
+                gameObject.transform.localScale = localScale;
+            }
             animator.SetBool("isEnemyRun", false);
             animator.SetBool("isEnemyAttack", true);
+            
+
         }
         else
         {
@@ -64,7 +91,16 @@ public class EnemyBehaviourScript : MonoBehaviour
                     break;
             }
         }
-        
+        if (Input.GetKey(KeyCode.Space))
+        {
+           if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
+           {
+                health -= damage;
+                healthBar.SetHealth(health);
+            }
+            
+        }
+
     }
     public void deg(GameObject vitri)
     {
@@ -72,5 +108,28 @@ public class EnemyBehaviourScript : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, vitri.transform.position, 1 * Time.deltaTime);
         Debug.Log("deg");    
     }
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                health -= damage;
+                healthBar.SetHealth(health);
+            }
+            StartCoroutine(EnemyHit());
+        }
+    }
+    IEnumerator EnemyHit()
+    {
+        if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
+        {
+            healthPlayer -= damagePlayer;
+            healthBarPlayer.SetHealth(healthPlayer);
+        }
+
+        yield return new WaitForSeconds(spawnDelay);
+        StartCoroutine(EnemyHit());
+    }
 }

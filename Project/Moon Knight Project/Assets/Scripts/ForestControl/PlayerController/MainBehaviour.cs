@@ -10,6 +10,14 @@ public class MainBehaviour : MonoBehaviour
     public float movementSpeed = 5.0f;
     private float InputDirection;
     public float jumpForce = 5.0f;
+    private GameObject enemy;
+    //thanh mau
+    [SerializeField]
+    HealthBar healthBar;
+    int health = 10000;
+    int damage = 500;
+    public float spawnDelay = 10;
+
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
@@ -66,7 +74,11 @@ public class MainBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject gameObject = collision.gameObject;
-        Debug.Log("Va cham " + gameObject.name);
+        if (collision.gameObject.tag == "Enemy")
+        {
+           
+        }
     }
+   
 }
+

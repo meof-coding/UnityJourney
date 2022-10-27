@@ -78,3 +78,6 @@ TagManager:
   - name: TileSet
     uniqueID: 2353473779
     locked: 0
+  - name: Canvas
+    uniqueID: 2427769081
+    locked: 0
