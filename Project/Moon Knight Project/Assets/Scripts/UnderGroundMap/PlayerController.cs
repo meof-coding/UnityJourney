@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] objToDestroy;
     public List<GameObject> PlayersInTrigger;
     public bool isCollectSword = false;
+    public bool isCollectBow = false;
 
     //Attack Animation
     public Animator attack;
@@ -55,6 +56,19 @@ public class PlayerController : MonoBehaviour
 
     public float attackRate = 2f;
     float nextAttackTime = 0f;
+
+    //Slash effect
+    [SerializeField]
+    private GameObject Slash;
+
+    //Level Trigger
+    public LayerMask levelLayers;
+
+    //SlashSound
+    public AudioSource slashSound;
+
+    //WalkSound
+    public AudioSource walkSound;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -79,6 +93,18 @@ public class PlayerController : MonoBehaviour
         CheckIfCanJump();
         onPickUpItem();
 
+        if (isRunning && isGrounded)
+        {
+            if (!walkSound.isPlaying)
+            {
+                walkSound.GetComponent<AudioSource>().Play();
+            }
+        }
+        else
+        {
+            walkSound.GetComponent<AudioSource>().Stop();
+        }
+
         if (Time.time >= nextAttackTime)
         {
             //Test mouse click
@@ -88,9 +114,11 @@ public class PlayerController : MonoBehaviour
                 {
 
                     attack.SetTrigger("SwordAttack1");
+                    Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
+                    Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
-
                 }
             }
 
@@ -99,6 +127,9 @@ public class PlayerController : MonoBehaviour
                 if (isCollectSword)
                 {
                     attack.SetTrigger("SwordAttack2");
+                    Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
+                    Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
                 }
@@ -110,6 +141,9 @@ public class PlayerController : MonoBehaviour
                 if (isCollectSword)
                 {
                     attack.SetTrigger("SwordAttack3");
+                    Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
+                    Invoke("NoSlash", 0.4f);
                     nextAttackTime = Time.time + 1f / attackRate;
                     Attack();
                 }
@@ -152,14 +186,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SlashImpact()
+    {
+        Slash.SetActive(true);
+    }
+
+    private void NoSlash()
+    {
+        Slash.SetActive(false);
+    }
+
     private void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitLevel = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, levelLayers);
         //Damage them
         foreach (var enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyController>().TakeDamage(20);
         }
+
+        foreach (var level in hitLevel)
+        {
+            level.GetComponent<LevelController>().SwitchOn();
+        }
+
     }
 
     //update every second
@@ -250,6 +301,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isClimb", climb);
         animator.SetBool("isnotClimb", ladleHold);
         animator.SetBool("isCollectSword", isCollectSword);
+        animator.SetBool("isCollectBow", isCollectBow);
 
     }
 
@@ -289,6 +341,10 @@ public class PlayerController : MonoBehaviour
             if (PlayersInTrigger[0].tag == "Sword")
             {
                 isCollectSword = true;
+            }
+            if (PlayersInTrigger[0].tag == "Bow")
+            {
+                isCollectBow = true;
             }
             Destroy(PlayersInTrigger[0], audio.clip.length);
         }
