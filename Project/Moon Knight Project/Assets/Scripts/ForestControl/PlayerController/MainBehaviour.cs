@@ -37,6 +37,15 @@ public class MainBehaviour : MonoBehaviour
     private bool isSword = false;
     private bool isSpear = false;
 
+    //hien thi panel khi dead/win
+    public GameObject panelDead;
+    public GameObject panelWin;
+    public GameObject outDoor;
+    public GameObject keyButton;
+    private Button btnKey;
+    private bool isActiveKey = false;
+
+
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
@@ -45,10 +54,16 @@ public class MainBehaviour : MonoBehaviour
         btnSword = swordButton.GetComponent<Button>();
         btnSpear = spearButton.GetComponent<Button>();
         btnHealth = healthButton.GetComponent<Button>();
+        btnKey = keyButton.GetComponent<Button>();
         //gọi ham click
         btnSword.onClick.AddListener(TaskOnSwordClick);
         btnSpear.onClick.AddListener(TaskOnSpearClick);
         btnHealth.onClick.AddListener(TaskOnHealthClick);
+        
+        //set Panel
+        panelDead.SetActive(false);
+        panelWin.SetActive(isActiveKey);
+        btnKey.onClick.AddListener(TaskOnKeyClick);
     }
 
    
@@ -105,6 +120,18 @@ public class MainBehaviour : MonoBehaviour
             animator.SetBool("isSpear", true);
             animator.SetBool("isSword", false);
         }
+
+        //check main die
+        if (health <= 0)
+        {
+            animator.SetBool("isDie", true);
+            animator.SetBool("IsRun", false);
+            animator.SetBool("IsStay", false);
+            animator.SetBool("isAttack", false);
+            StartCoroutine(Dead());
+            
+        }
+        panelWin.SetActive(isActiveKey);
     }
 
 
@@ -198,8 +225,22 @@ public class MainBehaviour : MonoBehaviour
     }
     void TaskOnHealthClick()
     {
-        health = 10000;
+        health += 5000;
         healthBar.SetHealth(health);
+    }
+    void TaskOnKeyClick()
+    {
+        if (Mathf.Abs(outDoor.transform.position.x - transform.position.x) < 5)
+       {
+           isActiveKey = true;
+      }
+    }
+
+    //dead function
+    IEnumerator Dead()
+    {
+        yield return new WaitForSeconds(2);
+        panelDead.SetActive(true);
     }
 }
 

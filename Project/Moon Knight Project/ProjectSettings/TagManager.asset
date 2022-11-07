@@ -8,6 +8,8 @@ TagManager:
   - Sword
   - Health
   - Bow
+  - Enemy
+  - Out
   layers:
   - Default
   - TransparentFX
@@ -78,6 +80,9 @@ TagManager:
   - name: TileSet
     uniqueID: 2353473779
     locked: 0
-  - name: Canvas
+  - name: ObjectCanvas
     uniqueID: 2427769081
+    locked: 0
+  - name: Canvas
+    uniqueID: 2525169321
     locked: 0
