@@ -15,7 +15,8 @@ public class ChestBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
+        if(Mathf.Abs(transform.position.x - player.transform.position.x) < 2 &&
+            Mathf.Abs(transform.position.y - player.transform.position.y) < 5)
         {
             animator.SetBool("isClose", false);
             animator.SetBool("isOpen", true);

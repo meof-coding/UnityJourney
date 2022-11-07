@@ -11,20 +11,18 @@ public class EnemyBehaviourScript : MonoBehaviour
     Vector2 vec;
     public GameObject player;
     Animator animator;
+    Collision2D collision;
     //thanh mau
     [SerializeField]
     public HealthBar healthBar;
-    int health = 10000;
+    int health=10000;
     int damage = 50;
 
-    public HealthBar healthBarPlayer;
-    public float spawnDelay = 10;
-    int healthPlayer = 10000;
-    int damagePlayer = 50;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        collision = gameObject.GetComponent<Collision2D>();
     }
     
     
@@ -93,12 +91,21 @@ public class EnemyBehaviourScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-           if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
+           if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2
+                && Mathf.Abs(transform.position.y - player.transform.position.y) < 10)
            {
                 health -= damage;
                 healthBar.SetHealth(health);
             }
             
+        }
+        if (health <= 0)
+        {
+       
+            animator.SetBool("isDead", true);
+            animator.SetBool("isEnemyRun", false);
+            animator.SetBool("isEnemyAttack", false);
+            StartCoroutine(Dead());
         }
 
     }
@@ -110,26 +117,12 @@ public class EnemyBehaviourScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-        {
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                health -= damage;
-                healthBar.SetHealth(health);
-            }
-            StartCoroutine(EnemyHit());
-        }
+       
     }
-    IEnumerator EnemyHit()
+   
+    IEnumerator Dead()
     {
-        if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
-        {
-            healthPlayer -= damagePlayer;
-            healthBarPlayer.SetHealth(healthPlayer);
-        }
-
-        yield return new WaitForSeconds(spawnDelay);
-        StartCoroutine(EnemyHit());
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }

@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    GameObject button;
+   
     public GameObject player;
     Animator animator;
     private bool isRun = true;
     private bool isSwordAttack = false;
+    private bool isActive = true;
     // Start is called before the first frame update
     void Start()
     {
-        button = GameObject.Find("Button");
+        Button btn = gameObject.GetComponent<Button>();
         
+        animator = player.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+        gameObject.SetActive(isActive);
     }
-    void ButtonClicked()
-    {
-        isRun = false;
-        isSwordAttack = true;
-    }
+    
 }

@@ -16,7 +16,8 @@ public class CoinBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2)
+        if (Mathf.Abs(transform.position.x - player.transform.position.x) < 2 &&
+            Mathf.Abs(transform.position.y - player.transform.position.y) < 5)
         {
             transform.position = Vector3.MoveTowards(transform.position, sdiem.transform.position, 2 * Time.deltaTime);
             
