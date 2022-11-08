@@ -8,8 +8,6 @@ public class ButtonBehaviour : MonoBehaviour
    
     public GameObject player;
     Animator animator;
-    private bool isRun = true;
-    private bool isSwordAttack = false;
     private bool isActive = true;
     // Start is called before the first frame update
     void Start()

@@ -42,6 +42,7 @@ public class MainBehaviour : MonoBehaviour
     public GameObject panelWin;
     public GameObject outDoor;
     public GameObject keyButton;
+    public GameObject nextButton;
     private Button btnKey;
     private bool isActiveKey = false;
 
@@ -63,7 +64,9 @@ public class MainBehaviour : MonoBehaviour
         //set Panel
         panelDead.SetActive(false);
         panelWin.SetActive(isActiveKey);
+        nextButton.SetActive(isActiveKey);
         btnKey.onClick.AddListener(TaskOnKeyClick);
+        
     }
 
    
@@ -132,6 +135,7 @@ public class MainBehaviour : MonoBehaviour
             
         }
         panelWin.SetActive(isActiveKey);
+        nextButton.SetActive(isActiveKey);
     }
 
 
