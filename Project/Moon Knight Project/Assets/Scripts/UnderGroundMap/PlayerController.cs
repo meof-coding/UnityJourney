@@ -266,9 +266,16 @@ public class PlayerController : MonoBehaviour
         {
             if (isCollectBow)
             {
-                Instantiate(arrowPrefabs, shootingPoint.position, transform.rotation);
+                //Play an attack animation
+                attack.SetTrigger("BowAttack");
+                Invoke("ShootArrow", 0.3f);
             }
         }
+    }
+
+    private void ShootArrow()
+    {
+        Instantiate(arrowPrefabs, shootingPoint.position, transform.rotation);
     }
 
     private void SlashImpact()
