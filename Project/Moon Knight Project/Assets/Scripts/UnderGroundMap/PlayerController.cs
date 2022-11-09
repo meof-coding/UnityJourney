@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //Accessible by inspector
@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour
     //WalkSound
     public AudioSource walkSound;
 
+    //Shooting
+    public Transform shootingPoint;
+    public GameObject arrowPrefabs;
+
+    //Others
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -93,6 +98,7 @@ public class PlayerController : MonoBehaviour
         CheckIfCanJump();
         onPickUpItem();
 
+        //Play audio for Walking
         if (isRunning && isGrounded)
         {
             if (!walkSound.isPlaying)
@@ -105,6 +111,7 @@ public class PlayerController : MonoBehaviour
             walkSound.GetComponent<AudioSource>().Stop();
         }
 
+        //Attack Stuff
         if (Time.time >= nextAttackTime)
         {
             //Test mouse click
@@ -112,7 +119,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (isCollectSword)
                 {
-
                     attack.SetTrigger("SwordAttack1");
                     Invoke("SlashImpact", 0.2f);
                     slashSound.GetComponent<AudioSource>().Play();
@@ -122,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            //Attack 2
             if (Input.GetMouseButtonDown(1))
             {
                 if (isCollectSword)
@@ -135,7 +142,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
+            //Attack 3
             if (Input.GetMouseButtonDown(2))
             {
                 if (isCollectSword)
@@ -150,7 +157,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+        //Climb
         if (ClimbingAllowed)
         {
             if (isTouchingWalls && !isGrounded && Input.anyKey)
@@ -183,6 +190,15 @@ public class PlayerController : MonoBehaviour
         else if (rb.velocity.y > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+        //Shooting
+        if (Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            if (isCollectBow)
+            {
+                Instantiate(arrowPrefabs, shootingPoint.position, transform.rotation);
+            }
         }
     }
 
