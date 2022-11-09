@@ -8,15 +8,15 @@ public class MainBehaviour : MonoBehaviour
     Rigidbody2D rb;
     Vector2 localScale;
     Animator animator;
-    public float movementSpeed = 5.0f;
+    public float movementSpeed;
     private float InputDirection;
-    public float jumpForce = 5.0f;
+    public float jumpForce;
     private GameObject enemy;
     //thanh mau
     [SerializeField]
     HealthBar healthBar;
     int health = 10000;
-    int damage = 200;
+    int damage = 300;
     int healthBack = 5000;
     public float spawnDelay = 2;
 
@@ -231,6 +231,7 @@ public class MainBehaviour : MonoBehaviour
     {
         health += 5000;
         healthBar.SetHealth(health);
+        healthButton.SetActive(false);
     }
     void TaskOnKeyClick()
     {
