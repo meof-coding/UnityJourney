@@ -2,39 +2,82 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyController : MonoBehaviour
 {
-    public float speed;
-    private GameObject player;
+    public float speed = 200f;
     public Animator animator;
     public int maxHealth = 100;
     int currentHealth;
-    public Transform startingPoint;
+    public Transform target;
+    public float nextWaypointDistance = 3f;
+    public Transform enemyGFX;
+    Path path;
+    int currentWaypoint = 0;
+    bool reachEndOfPath = false;
+    Seeker seeker;
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        player = GameObject.FindGameObjectWithTag("Player");
+        seeker = GetComponent<Seeker>();
+        rb = GetComponent<Rigidbody2D>();
+        InvokeRepeating("UpdatePath", 0f, .5f);
+    }
+
+    private void UpdatePath()
+    {
+        if (seeker.IsDone())
+        {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
+    }
+
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (player != null)
-        {
-            Chaise();
-            Flip();
-        }
-        else
+        if (path == null)
         {
             return;
         }
-    }
+        animator.SetTrigger("Chaise");
+        if (currentWaypoint >= path.vectorPath.Count)
+        {
+            reachEndOfPath = true;
+            return;
+        }
+        else
+        {
+            reachEndOfPath = false;
+        }
 
-    private void ReturnStartingPoint()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, speed * Time.deltaTime);
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector2 force = direction * speed * Time.deltaTime;
+        rb.AddForce(force);
+        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        if (distance < nextWaypointDistance)
+        {
+            currentWaypoint++;
+        }
+        if (rb.velocity.x >= 0.01f)
+        {
+            enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (rb.velocity.x <= -0.01f)
+        {
+            enemyGFX.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -55,24 +98,5 @@ public class EnemyController : MonoBehaviour
         //Disable the enemy
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
-    }
-
-    private void Chaise()
-    {
-        animator.SetTrigger("Chaise");
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-
-    }
-
-    private void Flip()
-    {
-        if (transform.position.x > player.transform.position.x)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
     }
 }
