@@ -176,6 +176,75 @@ public class PlayerController : MonoBehaviour
                 climb = false;
             }
         }
+        else
+        {
+            walkSound.GetComponent<AudioSource>().Stop();
+        }
+
+        if (Time.time >= nextAttackTime)
+        {
+            //Test mouse click
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (isCollectSword)
+                {
+
+                    attack.SetTrigger("SwordAttack1");
+                    Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
+                    Invoke("NoSlash", 0.4f);
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (isCollectSword)
+                {
+                    attack.SetTrigger("SwordAttack2");
+                    Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
+                    Invoke("NoSlash", 0.4f);
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
+            }
+
+
+            if (Input.GetMouseButtonDown(2))
+            {
+                if (isCollectSword)
+                {
+                    attack.SetTrigger("SwordAttack3");
+                    Invoke("SlashImpact", 0.2f);
+                    slashSound.GetComponent<AudioSource>().Play();
+                    Invoke("NoSlash", 0.4f);
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    Attack();
+                }
+            }
+        }
+
+
+        if (ClimbingAllowed)
+        {
+            if (isTouchingWalls && !isGrounded && Input.anyKey)
+            {
+                climb = true;
+                dirY = Input.GetAxisRaw("Vertical") * moveSpeed;
+            }
+            if (isTouchingWalls && !isGrounded && !Input.anyKey)
+            {
+                ladleHold = true;
+                climb = false;
+                dirY = 0;
+            }
+            if (!isTouchingWalls && isGrounded)
+            {
+                climb = false;
+            }
+        }
         if (isGrounded)
         {
             ladleHold = false;
