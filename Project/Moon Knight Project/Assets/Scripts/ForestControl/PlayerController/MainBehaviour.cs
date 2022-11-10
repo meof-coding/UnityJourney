@@ -16,7 +16,7 @@ public class MainBehaviour : MonoBehaviour
     [SerializeField]
     HealthBar healthBar;
     int health = 10000;
-    int damage = 300;
+    int damage = 400;
     int healthBack = 5000;
     public float spawnDelay = 2;
 
