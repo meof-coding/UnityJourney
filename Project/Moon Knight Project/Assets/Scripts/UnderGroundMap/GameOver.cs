@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -11,5 +12,9 @@ public class GameOver : MonoBehaviour
         pointsText.text = score.ToString();
     }
 
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("Sample_2");
+    }
 
 }
