@@ -21,5 +21,6 @@ public class ArrowScript : MonoBehaviour
             enemyController.TakeDamage(20);
             Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

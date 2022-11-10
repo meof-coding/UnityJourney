@@ -78,9 +78,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    //Health bar
+    public HealthBar healthbar;
+    public float hitPoint;
+    public float maxHitPoint = 5;
+
     // Start is called before the first frame update
     void Start()
     {
+        healthbar.SetHealth(1);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         availableJumpLeft = availableJump;
@@ -415,6 +421,14 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Sword" || collision.tag == "Health" || collision.tag == "Bow")
         {
             PlayersInTrigger.Add(collision.gameObject);
+        }
+        if (collision.tag == "Enemy")
+        {
+            healthbar.loseHealth(10);
+            if (hitPoint <= 0)
+            {
+                animator.SetTrigger("Die");
+            }
         }
     }
 

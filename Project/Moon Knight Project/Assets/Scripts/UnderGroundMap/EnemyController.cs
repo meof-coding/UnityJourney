@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
         currentHealth = maxHealth;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
 
@@ -91,12 +92,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (currentHealth > 0)
+            animator.SetTrigger("Attack");
+    }
+
     private void Die()
     {
         //Die animation
         animator.SetBool("isDead", true);
         //Disable the enemy
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 2;
     }
 }
