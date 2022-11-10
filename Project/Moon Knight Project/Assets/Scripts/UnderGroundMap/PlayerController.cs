@@ -81,12 +81,14 @@ public class PlayerController : MonoBehaviour
     //Health bar
     public HealthBar healthbar;
     public float hitPoint;
-    public float maxHitPoint = 5;
+    public int maxHitPoint = 5;
 
+    //Game over
+    public GameOver gameover;
     // Start is called before the first frame update
     void Start()
     {
-        healthbar.SetHealth(1);
+        healthbar.SetHealth(100);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         availableJumpLeft = availableJump;
@@ -425,12 +427,14 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             healthbar.loseHealth(10);
-            if (hitPoint <= 0)
+            if (healthbar.GetHealth() <= 0)
             {
                 animator.SetTrigger("Die");
+                gameover.Setup(maxHitPoint);
             }
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -451,6 +455,10 @@ public class PlayerController : MonoBehaviour
             if (PlayersInTrigger[0].tag == "Bow")
             {
                 isCollectBow = true;
+            }
+            if (PlayersInTrigger[0].tag == "Health")
+            {
+                healthbar.AddHealth(20);
             }
             Destroy(PlayersInTrigger[0], audio.clip.length);
         }

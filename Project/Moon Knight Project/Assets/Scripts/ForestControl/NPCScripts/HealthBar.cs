@@ -35,15 +35,19 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
     }
+    public float GetHealth()
+    {
+        return slider.value;
+    }
     public void SetHealth(int health)
     {
         slider.value = health;
         slider.wholeNumbers = true;
     }
-    public void SetMaxHealth(int health)
+    public void AddHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        var currentHealth = GetHealth();
+        slider.value = currentHealth + health;
         slider.wholeNumbers = true;
     }
 }
