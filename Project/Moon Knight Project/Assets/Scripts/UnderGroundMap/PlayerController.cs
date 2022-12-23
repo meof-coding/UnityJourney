@@ -78,9 +78,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    //Health bar
+    public HealthBar healthbar;
+    public float hitPoint;
+    public int maxHitPoint = 5;
+
+    //Game over
+    public GameOver gameover;
     // Start is called before the first frame update
     void Start()
     {
+        healthbar.SetHealth(100);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         availableJumpLeft = availableJump;
@@ -266,9 +274,16 @@ public class PlayerController : MonoBehaviour
         {
             if (isCollectBow)
             {
-                Instantiate(arrowPrefabs, shootingPoint.position, transform.rotation);
+                //Play an attack animation
+                attack.SetTrigger("BowAttack");
+                Invoke("ShootArrow", 0.3f);
             }
         }
+    }
+
+    private void ShootArrow()
+    {
+        Instantiate(arrowPrefabs, shootingPoint.position, transform.rotation);
     }
 
     private void SlashImpact()
@@ -409,7 +424,17 @@ public class PlayerController : MonoBehaviour
         {
             PlayersInTrigger.Add(collision.gameObject);
         }
+        if (collision.tag == "Enemy")
+        {
+            healthbar.loseHealth(10);
+            if (healthbar.GetHealth() <= 0)
+            {
+                animator.SetTrigger("Die");
+                gameover.Setup(maxHitPoint);
+            }
+        }
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -430,6 +455,10 @@ public class PlayerController : MonoBehaviour
             if (PlayersInTrigger[0].tag == "Bow")
             {
                 isCollectBow = true;
+            }
+            if (PlayersInTrigger[0].tag == "Health")
+            {
+                healthbar.AddHealth(20);
             }
             Destroy(PlayersInTrigger[0], audio.clip.length);
         }
