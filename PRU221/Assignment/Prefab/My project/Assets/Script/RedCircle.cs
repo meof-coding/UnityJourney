@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class Instantiate_example : MonoBehaviour
+public class RedCircle : Mover
 {
-    public Transform prefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(prefab, new Vector3(2.0F, 0, 0), Quaternion.identity);
+        OnPlacedRandom(gameObject);
+        //generate prefab at random position in screen bound
+        MoveRandom();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //moving object
 
     }
 }
