@@ -16,14 +16,12 @@ public class RedCircle : Mover
     void Start()
     {
         OnPlacedRandom(gameObject);
-        //generate prefab at random position in screen bound
-        MoveRandom();
     }
 
     // Update is called once per frame
     void Update()
     {
         //moving object
-
+        MoveRandom();
     }
 }

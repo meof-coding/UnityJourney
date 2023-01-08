@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    //timer object
-    Timer timer;
+
     //timer duration
     float totalSeconds = 0;
     //timer execution
@@ -27,12 +26,6 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = gameObject.AddComponent<Timer>();
-        timer.Duration = 2;
-        timer.Run();
-
-        //set start time = current time
-        startTime = Time.time;
     }
 
     public void Run()
