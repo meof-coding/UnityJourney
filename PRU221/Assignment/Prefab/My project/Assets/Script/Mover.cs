@@ -12,7 +12,7 @@ public class Mover : MonoBehaviour
     public float Speed { get; set; }
     public int Power { get; set; }
 
-    //
+    // On collision operation.
     public virtual void OnCollisionOperation(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("whiteCircle"))
@@ -38,6 +38,7 @@ public class Mover : MonoBehaviour
         // Instantiate(red, spawnPosition, Quaternion.identity);
     }
 
+    // Creates a random position in the camera.
     private static void RandomPosition(out float spawnY, out float spawnX)
     {
         spawnY = Random.Range
@@ -62,6 +63,7 @@ public class Mover : MonoBehaviour
     }
 
 
+    // On collision entry 2D.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("onCollisionEnter2D");
