@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField]
-    public float duration = 0.2f;
-    public GameObject circlePrefabs { get; set; }
-    public float Speed { get; set; }
-    public int Power { get; set; }
+    const float spawnTime = 2;
+    Timer spawnTimer;
+    float Speed { get; set; }
+    int Power { get; set; }
+    float startTime;
 
     // On collision operation.
     public virtual void OnCollisionOperation(Collision2D collision)
@@ -47,6 +47,31 @@ public class Mover : MonoBehaviour
                     (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
 
     }
+
+    //create and start the timer 
+
+    public virtual void InitSpawn(GameObject circlePrefabs)
+    {
+        //create and start the timer
+        spawnTimer = circlePrefabs.AddComponent<Timer>();
+        startTime = Time.time;
+        spawnTimer.Duration = spawnTime;
+        spawnTimer.Run();
+    }
+
+    public virtual void SpawnRandom(GameObject circlePrefabs)
+    {
+        if (spawnTimer.Finished)
+        {
+            //spawn the circle
+            GameObject circle = Instantiate(circlePrefabs) as GameObject;
+            Debug.Log("Elapsed time is: " + (Time.time - startTime) + " seconds");
+            OnPlacedRandom(circle);
+            //rerun the timer
+            spawnTimer.Run();
+        }
+    }
+
 
     //moving random
     public virtual void MoveRandom()

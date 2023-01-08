@@ -5,7 +5,13 @@ using static UnityEngine.GraphicsBuffer;
 
 public class RedCircle : Mover
 {
+    [SerializeField]
+    //make field visible in Inspector
+    GameObject prefabCirlce;
 
+    [SerializeField]
+    //make field visible in Inspector
+    object circleSprites { get; set; }
     // Start is called before the first frame update
     void Start()
     {
