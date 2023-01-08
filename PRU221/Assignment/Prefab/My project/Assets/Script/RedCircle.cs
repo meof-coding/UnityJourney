@@ -8,7 +8,6 @@ public class RedCircle : Mover
     [SerializeField]
     //make field visible in Inspector
     GameObject prefabCirlce;
-
     [SerializeField]
     //make field visible in Inspector
     object circleSprites { get; set; }

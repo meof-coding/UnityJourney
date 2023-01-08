@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
 
 public class Mover : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Mover : MonoBehaviour
     float Speed { get; set; }
     int Power { get; set; }
     float startTime;
+    [SerializeField]
+    TMP_Text score;
 
     // On collision operation.
     public virtual void OnCollisionOperation(Collision2D collision)
@@ -20,7 +23,8 @@ public class Mover : MonoBehaviour
             Destroy(collision.gameObject);
             //scale size of gameobject
             gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
-            //Power++;
+            Power++;
+            score.text = "score: " + Power.ToString();
             //if (Power <= 0)
             //{
             //    //GameObject explosion = Object.Instantiate<GameObject>(circlePrefabs, gameObject.transform.position, Quaternion.identity);
