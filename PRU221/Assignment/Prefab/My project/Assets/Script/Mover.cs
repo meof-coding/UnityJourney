@@ -9,8 +9,7 @@ public class Mover : MonoBehaviour
 {
     const float spawnTime = 2;
     Timer spawnTimer;
-    float Speed { get; set; }
-    int Power { get; set; }
+    int Power = 0;
     float startTime;
     [SerializeField]
     TMP_Text score;
@@ -25,12 +24,6 @@ public class Mover : MonoBehaviour
             gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
             Power++;
             score.text = "score: " + Power.ToString();
-            //if (Power <= 0)
-            //{
-            //    //GameObject explosion = Object.Instantiate<GameObject>(circlePrefabs, gameObject.transform.position, Quaternion.identity);
-            //    //Helper.GetGameMonitor().Score += 1;
-            //    Destroy(collision.gameObject);
-            //}
         }
     }
 
