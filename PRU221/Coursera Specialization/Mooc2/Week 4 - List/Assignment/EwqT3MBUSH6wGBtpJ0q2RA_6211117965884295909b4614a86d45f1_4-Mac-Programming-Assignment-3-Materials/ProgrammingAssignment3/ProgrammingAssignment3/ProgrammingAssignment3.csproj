@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ConsoleCards" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ConsoleCards">
+      <HintPath>ConsoleCards.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

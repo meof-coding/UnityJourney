@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{9808E31F-8933-4629-A542-3026845DA201}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc2/Week 4 - List/Assignment/EwqT3MBUSH6wGBtpJ0q2RA_6211117965884295909b4614a86d45f1_4-Mac-Programming-Assignment-3-Materials/ProgrammingAssignment3/ProgrammingAssignment3/Program.cs" relfile="ProgrammingAssignment3/Program.cs" line="34" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ProgrammingAssignment3 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProgrammingAssignment3/Program.cs">
+    <Files>
+      <File FileName="ProgrammingAssignment3/Program.cs" Line="46" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProgrammingAssignment3" expanded="True">
+            <Node name="ProgrammingAssignment3" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
