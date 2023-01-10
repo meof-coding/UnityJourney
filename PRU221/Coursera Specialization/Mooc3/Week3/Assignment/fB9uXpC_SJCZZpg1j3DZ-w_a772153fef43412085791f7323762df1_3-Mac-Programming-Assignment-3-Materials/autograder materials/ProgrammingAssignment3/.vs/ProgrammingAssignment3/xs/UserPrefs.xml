@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{30B8552A-DE0D-4167-A01D-B236EC0977BB}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ProgrammingAssignment3 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProgrammingAssignment3/Mover.cs">
+    <Files>
+      <File FileName="ProgrammingAssignment3/Program.cs" />
+      <File FileName="ProgrammingAssignment3/Mover.cs" Line="72" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProgrammingAssignment3" expanded="True">
+            <Node name="ProgrammingAssignment3" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Mover.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>

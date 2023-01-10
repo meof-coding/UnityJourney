@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{A17A3FB5-8D4E-4F26-9C3B-68C5E7636CDD}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProgrammingAssignment2/Program.cs">
+    <Files>
+      <File FileName="ProgrammingAssignment2/Program.cs" Line="27" Column="1" />
+      <File FileName="ProgrammingAssignment2/Matherator.cs" Line="49" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProgrammingAssignment2" expanded="True">
+            <Node name="ProgrammingAssignment2" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ProgrammingAssignment2 PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
