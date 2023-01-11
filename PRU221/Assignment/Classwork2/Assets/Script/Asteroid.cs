@@ -48,9 +48,9 @@ public class Asteroid : MonoBehaviour
         {
             angle = 75 * Mathf.Deg2Rad + randomAngle;
         }
-        else if (direction == Direction.Right)
+        else if (direction == Direction.Left)
         {
-            angle = -15 * Mathf.Deg2Rad + randomAngle;
+            angle = 165 * Mathf.Deg2Rad + randomAngle;
         }
         else if (direction == Direction.Down)
         {
@@ -58,7 +58,7 @@ public class Asteroid : MonoBehaviour
         }
         else
         {
-            angle = 165 * Mathf.Deg2Rad + randomAngle;
+            angle = -15 * Mathf.Deg2Rad + randomAngle;
         }
 
         // get asteroid moving
@@ -71,10 +71,12 @@ public class Asteroid : MonoBehaviour
     /// <param name="angle">angle</param>
     public void StartMoving(float angle)
     {
+        const float MinImpulseForce = 1f;
+        const float MaxImpulseForce = 3f;
         // apply impulse force to get asteroid moving
         Vector2 moveDirection = new Vector2(
             Mathf.Cos(angle), Mathf.Sin(angle));
-        float magnitude = 1f;
+        float magnitude = Random.Range(MinImpulseForce, MaxImpulseForce);
         GetComponent<Rigidbody2D>().AddForce(
             moveDirection * magnitude,
             ForceMode2D.Impulse);

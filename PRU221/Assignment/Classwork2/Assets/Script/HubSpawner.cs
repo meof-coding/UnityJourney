@@ -64,7 +64,7 @@ public class HubSpawner : MonoBehaviour
 
         if (spawnTimer.Finished)
         {
-            SpawnFromHub(Direction.Left, hubRight.transform.position);
+            SpawnFromHub(Direction.Right, hubRight.transform.position);
             //script.Initialize(Direction.Up, hubBottom.transform.position);
             SpawnFromHub(Direction.Up, hubBottom.transform.position);
             SpawnFromHub(Direction.Down, hubTop.transform.position);
