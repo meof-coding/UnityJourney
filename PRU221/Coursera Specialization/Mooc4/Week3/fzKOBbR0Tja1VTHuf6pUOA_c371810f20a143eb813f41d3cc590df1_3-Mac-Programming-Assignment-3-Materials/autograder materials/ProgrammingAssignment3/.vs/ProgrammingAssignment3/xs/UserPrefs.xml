@@ -1,0 +1,52 @@
+﻿<Properties StartupConfiguration="{9C3BDCB2-AF42-4C23-A911-A60A78819DB5}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ProgrammingAssignment3 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/Invoker.cs" relfile="ProgrammingAssignment3/Invoker.cs" line="112" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/Listener.cs" relfile="ProgrammingAssignment3/Listener.cs" line="22" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/Invoker.cs" relfile="ProgrammingAssignment3/Invoker.cs" line="36" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/Invoker.cs" relfile="ProgrammingAssignment3/Invoker.cs" line="127" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/EventManager.cs" relfile="ProgrammingAssignment3/EventManager.cs" line="50" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/EventManager.cs" relfile="ProgrammingAssignment3/EventManager.cs" line="58" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/EventManager.cs" relfile="ProgrammingAssignment3/EventManager.cs" line="114" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/EventManager.cs" relfile="ProgrammingAssignment3/EventManager.cs" line="134" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/EventManager.cs" relfile="ProgrammingAssignment3/EventManager.cs" line="124" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/EventManager.cs" relfile="ProgrammingAssignment3/EventManager.cs" line="103" column="1" />
+      <Breakpoint file="/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week3/fzKOBbR0Tja1VTHuf6pUOA_c371810f20a143eb813f41d3cc590df1_3-Mac-Programming-Assignment-3-Materials/autograder materials/ProgrammingAssignment3/ProgrammingAssignment3/CountMessageEvent.cs" relfile="ProgrammingAssignment3/CountMessageEvent.cs" line="9" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProgrammingAssignment3/Invoker.cs">
+    <Files>
+      <File FileName="ProgrammingAssignment3/Program.cs" />
+      <File FileName="ProgrammingAssignment3/MessageEvent.cs" Line="12" Column="2" />
+      <File FileName="ProgrammingAssignment3/CountMessageEvent.cs" Line="7" Column="2" />
+      <File FileName="ProgrammingAssignment3/Listener.cs" />
+      <File FileName="ProgrammingAssignment3/EventManager.cs" />
+      <File FileName="ProgrammingAssignment3/Invoker.cs" Line="42" Column="26" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ProgrammingAssignment3" expanded="True">
+            <Node name="ProgrammingAssignment3" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>intArgumentInvoker</Value>
+          <Value>line.Substring(pos, line.Length - 1)</Value>
+          <Value>pos</Value>
+          <Value>line.Length</Value>
+          <Value>line</Value>
+          <Value>Math.Abs(firstAmount - secondAmount) &lt;= 0.01f</Value>
+          <Value>Math.Abs(firstAmount - secondAmount) </Value>
+          <Value>199-0.01</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+</Properties>

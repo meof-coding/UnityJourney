@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
         {
             //AudioManager.Play(AudioClipName.AsteroidHit);
             Destroy(collision.gameObject);
-            Destroy(gameObject);
         }
     }
 

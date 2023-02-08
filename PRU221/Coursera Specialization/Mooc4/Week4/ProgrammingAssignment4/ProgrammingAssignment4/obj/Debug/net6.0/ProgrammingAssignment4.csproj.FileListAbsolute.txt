@@ -1,0 +1,15 @@
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/bin/Debug/net6.0/ProgrammingAssignment4
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/bin/Debug/net6.0/ProgrammingAssignment4.deps.json
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/bin/Debug/net6.0/ProgrammingAssignment4.runtimeconfig.json
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/bin/Debug/net6.0/ProgrammingAssignment4.dll
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/bin/Debug/net6.0/ProgrammingAssignment4.pdb
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.csproj.AssemblyReference.cache
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.AssemblyInfoInputs.cache
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.AssemblyInfo.cs
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.csproj.CoreCompileInputs.cache
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.dll
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/refint/ProgrammingAssignment4.dll
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.pdb
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ProgrammingAssignment4.genruntimeconfig.cache
+/Users/admin/Downloads/UnityJourney/PRU221/Coursera Specialization/Mooc4/Week4/ProgrammingAssignment4/ProgrammingAssignment4/obj/Debug/net6.0/ref/ProgrammingAssignment4.dll
