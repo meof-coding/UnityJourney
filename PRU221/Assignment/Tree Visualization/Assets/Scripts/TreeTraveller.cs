@@ -2,18 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class TreeTraveller : MonoBehaviour
 {
     [SerializeField]
-    public GameObject node;
+    public GameObject treeNode;
     [SerializeField]
     public GameObject line;
-    [SerializeField]
-    public int distanceX;
-
-    [SerializeField]
-    public int distanceY;
+    private int distanceX = 2;
+    private int distanceY = -2;
 
     [SerializeField]
     public int rootX;
@@ -37,12 +35,37 @@ public class TreeTraveller : MonoBehaviour
         PreOrderTraversal(tree.Root);
 
         //spawn node and line
-        SpawnNodeAndLine();
+        Visualize();
     }
 
-    private void SpawnNodeAndLine()
+    private void Visualize()
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < listNode.Count; i++)
+        {
+            BinaryTreeNode<NodeInfo> node = listNode[i];
+            BinaryTreeNode<NodeInfo> parent = node.Parent;
+            if (parent != null)
+            {
+                node.Data.x = parent.Data.x + distanceX;
+                node.Data.y = listNode[i - 1].Data.y + distanceY;
+            }
+            //spawn node
+            GameObject nodeBody = Instantiate<GameObject>(treeNode, new Vector3(node.Data.x, node.Data.y, 0), Quaternion.identity);
+            node.Data.body = nodeBody;
+            nodeBody.transform.position = new Vector3(node.Data.x, node.Data.y, 0);
+            //set text for nodeName serialize filed in node behavior is node.Data.name
+            nodeBody.GetComponent<NodeBehavior>().nodeName.SetText(node.Data.Name);
+            //drawline
+            // if (listNode[i].Parent != null)
+            // {
+            //     GameObject lineObj = Instantiate(line, new Vector3(listNode[i].Parent.Data.x, listNode[i].Parent.Data.y, 0), Quaternion.identity);
+            //     lineObj.name = listNode[i].Parent.Data.name + "-" + listNode[i].Data.name;
+            //     LineRenderer lineRenderer = lineObj.GetComponent<LineRenderer>();
+            //     lineRenderer.SetPosition(0, new Vector3(listNode[i].Parent.Data.x, listNode[i].Parent.Data.y, 0));
+            //     lineRenderer.SetPosition(1, new Vector3(listNode[i].Data.x, listNode[i].Data.y, 0));
+            // }
+
+        }
     }
 
     /// <summary>
@@ -55,7 +78,7 @@ public class TreeTraveller : MonoBehaviour
         {
             //add tree node to list
             listNode.Add(node);
-            Debug.Log(node.Data.name + " ");
+            Debug.Log(node.Data.Name + " ");
             if (node.Left != null)
             {
                 PreOrderTraversal(node.Left);
@@ -70,23 +93,23 @@ public class TreeTraveller : MonoBehaviour
     private BinaryTree<NodeInfo> BuildTree()
     {
         //init tree with root node F
-        BinaryTree<NodeInfo> tree = new BinaryTree<NodeInfo>(new NodeInfo { name = "F", x = rootX, y = rootY });
+        BinaryTree<NodeInfo> tree = new BinaryTree<NodeInfo>(new NodeInfo { Name = "F", x = rootX, y = rootY });
         //init tree node 
-        BinaryTreeNode<NodeInfo> nodeB = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "B", x = rootX, y = rootY }, tree.Root);
+        BinaryTreeNode<NodeInfo> nodeB = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "B", x = rootX, y = rootY }, tree.Root);
         tree.AddNode(nodeB, ChildSide.Left);
-        BinaryTreeNode<NodeInfo> nodeA = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "A", x = rootX, y = rootY }, nodeB);
+        BinaryTreeNode<NodeInfo> nodeA = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "A", x = rootX, y = rootY }, nodeB);
         tree.AddNode(nodeA, ChildSide.Left);
-        BinaryTreeNode<NodeInfo> nodeD = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "D", x = rootX, y = rootY }, nodeB);
+        BinaryTreeNode<NodeInfo> nodeD = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "D", x = rootX, y = rootY }, nodeB);
         tree.AddNode(nodeD, ChildSide.Right);
-        BinaryTreeNode<NodeInfo> nodeC = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "C", x = rootX, y = rootY }, nodeD);
+        BinaryTreeNode<NodeInfo> nodeC = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "C", x = rootX, y = rootY }, nodeD);
         tree.AddNode(nodeC, ChildSide.Left);
-        BinaryTreeNode<NodeInfo> nodeE = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "E", x = rootX, y = rootY }, nodeD);
+        BinaryTreeNode<NodeInfo> nodeE = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "E", x = rootX, y = rootY }, nodeD);
         tree.AddNode(nodeE, ChildSide.Right);
-        BinaryTreeNode<NodeInfo> nodeG = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "G", x = rootX, y = rootY }, tree.Root);
+        BinaryTreeNode<NodeInfo> nodeG = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "G", x = rootX, y = rootY }, tree.Root);
         tree.AddNode(nodeG, ChildSide.Right);
-        BinaryTreeNode<NodeInfo> nodeI = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "I", x = rootX, y = rootY }, nodeG);
+        BinaryTreeNode<NodeInfo> nodeI = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "I", x = rootX, y = rootY }, nodeG);
         tree.AddNode(nodeI, ChildSide.Right);
-        BinaryTreeNode<NodeInfo> nodeH = new BinaryTreeNode<NodeInfo>(new NodeInfo { name = "H", x = rootX, y = rootY }, nodeI);
+        BinaryTreeNode<NodeInfo> nodeH = new BinaryTreeNode<NodeInfo>(new NodeInfo { Name = "H", x = rootX, y = rootY }, nodeI);
         tree.AddNode(nodeH, ChildSide.Left);
         return tree;
     }

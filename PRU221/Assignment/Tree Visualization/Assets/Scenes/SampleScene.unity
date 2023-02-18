@@ -251,9 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75f6e0a3a4f34f5586e364baf028091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  node: {fileID: 2999030391961198092, guid: e41ad5f56e01b48b5bb460479cd52747, type: 3}
+  treeNode: {fileID: 8049467307782523901, guid: e41ad5f56e01b48b5bb460479cd52747, type: 3}
   line: {fileID: 0}
-  distanceX: 0
-  distanceY: 0
   rootX: 0
   rootY: 0

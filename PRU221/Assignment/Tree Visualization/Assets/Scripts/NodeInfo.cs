@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-public class NodeInfo
+public class NodeInfo : MonoBehaviour
 {
     //name
-    public string name { get; set; }
+    public string Name { get; set; }
     //x-coordinator
     public int x { get; set; }
     //y-coordinator
