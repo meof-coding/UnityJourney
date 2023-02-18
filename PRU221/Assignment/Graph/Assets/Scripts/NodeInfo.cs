@@ -13,7 +13,7 @@ public class NodeInfo
     public int Y { get; set; }
     //gameObject represent node
     public GameObject Body { get; set; }
-
+    public int visitedCount { get; set; }
     public List<GraphNode<NodeInfo>> visualPath { get; set; }
 
     //int numberOfVisitedNodes = 0;

@@ -15,6 +15,10 @@ public class MoverBehavior : MonoBehaviour
     int numberOfVisitedNodes = 0;
     void Update()
     {
+        if (visualPath.Count == 0)
+        {
+            Debug.Log("No path found");
+        }
         if (visualPath.Count > 0 && numberOfVisitedNodes < visualPath.Count)
         {
             GraphNode<NodeInfo> destination = visualPath[numberOfVisitedNodes];

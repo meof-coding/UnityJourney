@@ -17,6 +17,7 @@ public class Traveler : MonoBehaviour
     const float spawnTime = 2;
     Timer spawnTimer;
     float startTime;
+    int randomDestination;
     List<GraphNode<NodeInfo>> source;
     List<GraphNode<NodeInfo>> destination;
     Graph<NodeInfo> graph;
@@ -187,6 +188,8 @@ public class Traveler : MonoBehaviour
 
     private void Update()
     {
+        int minVisitedCount = int.MaxValue;
+        int randomDestination = 0;
         //in each 2s
         if (spawnTimer.Finished)
         {
@@ -197,10 +200,18 @@ public class Traveler : MonoBehaviour
                 newMover.transform.position = sourceNode.data.Body.transform.position;
                 //set position of monobehaviour script in newmover
                 sourceNode.data.Body.GetComponent<SpriteRenderer>().color = Color.yellow;
-                //get random element in destination list and set it to sourcenode
-                int randomDestination = Random.Range(0, destination.Count);
+                //get destination node have min visited count
+                foreach (GraphNode<NodeInfo> destinationNode in destination)
+                {
+                    if (destinationNode.data.visitedCount < minVisitedCount)
+                    {
+                        minVisitedCount = destinationNode.data.visitedCount;
+                        randomDestination = destination.IndexOf(destinationNode);
+                    }
+                }
                 //set color for destination
                 destination[randomDestination].data.Body.GetComponent<SpriteRenderer>().color = Color.blue;
+                destination[randomDestination].data.visitedCount++;
                 //assign to sourcenode
                 newMover.GetComponent<MoverBehavior>().visualPath = graph.getPath(sourceNode, destination[randomDestination]);
             }
