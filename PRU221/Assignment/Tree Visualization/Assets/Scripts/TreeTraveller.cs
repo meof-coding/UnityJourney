@@ -10,6 +10,9 @@ public class TreeTraveller : MonoBehaviour
     public GameObject treeNode;
     [SerializeField]
     public GameObject line;
+    [SerializeField]
+    private float animatorDuration = 5f;
+
     private int distanceX = 2;
     private int distanceY = -2;
 
@@ -28,7 +31,7 @@ public class TreeTraveller : MonoBehaviour
         tree = BuildTree();
 
         //get height of tree
-        Debug.Log(tree.GetHeight(tree.Root));
+        Debug.Log("Height of tree is : " + tree.GetHeight(tree.Root));
 
         //DFS traversal of tree
         Debug.Log("DFS Pre-Order traversal of tree");
@@ -55,16 +58,53 @@ public class TreeTraveller : MonoBehaviour
             nodeBody.transform.position = new Vector3(node.Data.x, node.Data.y, 0);
             //set text for nodeName serialize filed in node behavior is node.Data.name
             nodeBody.GetComponent<NodeBehavior>().nodeName.SetText(node.Data.Name);
-            //drawline
-            // if (listNode[i].Parent != null)
-            // {
-            //     GameObject lineObj = Instantiate(line, new Vector3(listNode[i].Parent.Data.x, listNode[i].Parent.Data.y, 0), Quaternion.identity);
-            //     lineObj.name = listNode[i].Parent.Data.name + "-" + listNode[i].Data.name;
-            //     LineRenderer lineRenderer = lineObj.GetComponent<LineRenderer>();
-            //     lineRenderer.SetPosition(0, new Vector3(listNode[i].Parent.Data.x, listNode[i].Parent.Data.y, 0));
-            //     lineRenderer.SetPosition(1, new Vector3(listNode[i].Data.x, listNode[i].Data.y, 0));
-            // }
 
+            //drawline from parent to node
+            if (parent != null)
+            {
+                DrawLine(parent, node);
+            }
+        }
+    }
+
+    private void DrawLine(BinaryTreeNode<NodeInfo> from, BinaryTreeNode<NodeInfo> to)
+    {
+        //vertical line
+        GameObject newLine1 = GameObject.Instantiate<GameObject>(line);
+        LineRenderer lineRenderer1 = newLine1.GetComponent<LineRenderer>();
+        List<Vector3> pos1 = new List<Vector3>();
+        pos1.Add(new Vector3(from.Data.x, from.Data.y));
+        pos1.Add(new Vector3(from.Data.x, to.Data.y));
+        //set positions for linerenderer1 is pos1[0] and pos1[0]
+        lineRenderer1.SetPosition(0, pos1[0]);
+        lineRenderer1.SetPosition(1, pos1[0]);
+        StartCoroutine(AnimateLine(lineRenderer1, pos1));
+
+        //horizontal line to connect parent node and child node
+        GameObject newLine2 = GameObject.Instantiate<GameObject>(line);
+        LineRenderer lineRenderer2 = newLine2.GetComponent<LineRenderer>();
+        List<Vector3> pos2 = new List<Vector3>();
+        pos2.Add(new Vector3(from.Data.x, to.Data.y));
+        pos2.Add(new Vector3(to.Data.x, to.Data.y));
+        //set positions for linerenderer1 is pos1[0] and pos1[0]
+        lineRenderer2.SetPosition(0, pos2[0]);
+        lineRenderer2.SetPosition(1, pos2[0]);
+        StartCoroutine(AnimateLine(lineRenderer2, pos2));
+    }
+
+    private IEnumerator AnimateLine(LineRenderer lineRenderer, List<Vector3> position)
+    {
+        float startTime = Time.time;
+        Vector3 startPosition = position[0];
+        Vector3 endPosition = position[1];
+
+        Vector3 pos = startPosition;
+        while (pos != endPosition)
+        {
+            float distCovered = (Time.time - startTime) / animatorDuration;
+            pos = Vector3.Lerp(startPosition, endPosition, distCovered);
+            lineRenderer.SetPosition(1, pos);
+            yield return null;
         }
     }
 

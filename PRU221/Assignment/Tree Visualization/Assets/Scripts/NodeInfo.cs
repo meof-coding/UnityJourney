@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class NodeInfo : MonoBehaviour
+public class NodeInfo
 {
     //name
     public string Name { get; set; }
