@@ -84,8 +84,6 @@ public class TreeTraveller : MonoBehaviour
             {
                 DrawLine(parent, node);
             }
-            drawnTimer.Run();
-
         }
     }
 
